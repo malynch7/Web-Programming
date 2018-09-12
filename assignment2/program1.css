@@ -1,0 +1,65 @@
+body{
+    font-family: Georgia;
+    background-color: #ffcc00;
+    color: #000000
+}
+
+h1, h2{
+    color: #A4A400;
+    background-color: #F0F0F0;
+    font-family: "Century Gothic";
+    text-align: center;
+}
+
+.inline{
+    display: inline-block;
+}
+
+.navlink{
+    background-color: #e2e49b;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    text-decoration: none;
+
+}
+
+.navtable{
+    padding-left: 50px;
+    border-spacing: 5px;
+}
+
+.navtable th{
+    background-color: #212179;
+    padding-right: 25px;
+    padding-left: 0px;
+}
+
+.floatright{
+    float: right;
+}
+
+ul{
+    list-style-image: url("images/leafbullet-sm.png");
+}
+
+.logo{
+    width: 100%;
+}
+
+.thumbnail{
+    width: 40%;
+}
+.column {
+    padding-top: 60px;
+    float: left;
+    width: 33.3%;
+    text-align: center;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
