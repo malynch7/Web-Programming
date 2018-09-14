@@ -14,9 +14,10 @@ h2,h1{
     margin-right:auto;
 	text-align: center;
 }
-	
 
-
+.headshot{
+    height: 255px;
+}
 
 #assignmenttable tr:nth-child(even) {
     background-color: #f2f2f2;
