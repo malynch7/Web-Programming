@@ -112,3 +112,8 @@ li a:hover:not(.active) {
 .headshot{
     width: 75%;
 }
+
+.video{
+    width: 800px;
+    height: 450px;
+}
