@@ -49,6 +49,9 @@ if($flag == false){
 }
 ?>
 
+<br>
+<a href="../index.html">Return to Mark Lynch's home page</a>
+<br>
 
 </body>
 </html>

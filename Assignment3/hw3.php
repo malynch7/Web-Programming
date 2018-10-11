@@ -99,15 +99,8 @@ function topRestaurants(){
 }
 topRestaurants();
 
-
-
-
-
-
-
-
-
-
-
-
 ?>
+
+<br>
+<a href="../index.html" class="center">Return to Mark Lynch's home page</a>
+<br>

@@ -79,22 +79,26 @@
 
 <?php
 
+date_default_timezone_set('America/New_York');
 $hours_to_show = 12;
 $timestamp = time();
-$clients = array ("","Bob","","Susan","John","","Carole","Sam","","","","Peggy");
+$clients = array ("","Bob","","Susan","John","","Carole","Sam","","","","Peggy","","Bruce","","Sue","Gary","","Jen","Sam","","","","Patricia");
 
 function get_hour_string($time){
     return date("h:00 a", $time);
 }
 
-echo "<table id=\"event_table\"><tr><th colspan='2'>Calendar for " . date(l , $timestamp) ."<br>" . date("F d, Y h:i a", $timestamp) . "</th></tr>" . "<tr><th>
-        Time</th><th>Client</th></tr>";
+echo "<table id=\"event_table\"><tr><th colspan='2'>Calendar for " . date(l , $timestamp) ."<br>" .
+    date("F d, Y h:i a", $timestamp) . "</th></tr>" . "<tr><th>Time</th><th>Client</th></tr>";
 for($i = 0; $i < $hours_to_show; $i++){
     echo "<tr><td>" . get_hour_string($timestamp + ($i * 3600)) . "</td><td>$clients[$i]</td></tr>";
 }
 echo "</table>";
 
 ?>
+<br>
+<a href="../index.html" class="center">Return to Mark Lynch's home page</a>
+<br>
 
 </body>
 </html>

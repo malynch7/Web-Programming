@@ -58,3 +58,7 @@ function q8(){
 }
 echo "8) " . q8() . "<br>";
 ?>
+
+<br>
+<a href="../index.html">Return to Mark Lynch's home page</a>
+<br>
