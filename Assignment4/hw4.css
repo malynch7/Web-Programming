@@ -24,32 +24,32 @@ h1
 	margin:5px 10px 10px;
 }
 
-#event_table .table_header
+#event_table th
 {
 	color:#000;
 	font-size:24px;
 	font-weight:400;
 	padding-left:5px;
-	text-align:left;
+	text-align:center;
 	text-decoration:none;
 	width:220px;
 }
 
-#event_table .even_row
+#event_table tr:nth-child(even)
 {
 	background-color:#86cefd;
 	height:40px;
 }
 
-#event_table .odd_row
+#event_table tr:nth-child(odd)
 {
 	background-color:#BCE4FE;
 	height:40px;
 }
 
-#event_table .hr_td
+#event_table td
 {
-	text-align:right;
+	text-align:center;
 	width:60px;
 }
 
