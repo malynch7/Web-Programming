@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11/01 Inclass Assignment</title>
+    <script type="text/javascript" src="11-01.js"></script>
+</head>
+<body onload="fibonacci()">
+
+
+<p id="q1"></p>
+
+<br>
+
+<p id="q2"></p>
+<script>
+    function astrisks(){
+        document.getElementById("q2").innerHTML = "2)<br><br>";
+        var i, j;
+        for(i = 0; i < 5; i++ ){
+            for(j = 0; j < (i + 1); j++){
+                document.getElementById("q2").innerHTML += "*";
+            }
+            document.getElementById("q2").innerHTML += "<br>";
+        }
+    }
+    astrisks();
+</script>
+
+<br>
+
+<p id="q3"></p>
+<script>
+    var arr1 = [3,8,7,6,5,-4,3,2,1];
+
+    function seqsort(array){
+        array.sort();
+        return array;
+    }
+
+    document.getElementById("q3").innerHTML ="3)<br><br>" + seqsort(arr1).toString() + "<br>";
+</script>
+
+<br>
+
+<p id="q4"></p>
+<script>
+    var arr2 = [3,'a','a','a',2,3,'a',3,'a',2,4,9,3];
+
+    function mostCommonChar(array){
+        if(array.length == 0)
+            return null;
+        var map = {};
+        var max = array[0], maxCount = 1;
+        for(var i = 0; i < array.length; i++)
+        {
+            var current = array[i];
+            if(map[current] == null)
+                map[current] = 1;
+            else
+                map[current]++;
+            if(map[current] > maxCount)
+            {
+                max = current;
+                maxCount = map[current];
+            }
+        }
+        return "" + max + " [" + maxCount + " times] ";
+    }
+
+    document.getElementById("q4").innerHTML ="4)<br><br>" + mostCommonChar(arr2) + "<br>";
+</script>
+
+<br>
+
+<p id="q5"></p>
+<script>
+    var arr3 = [1,2,3,4,5,6,7,8,9];
+
+    document.getElementById("q5").innerHTML = "5)<br><br>Original: " + arr3.toString()
+
+    function shuffle(array){
+        var i, j, tmp;
+        for (i = array.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            tmp = array[i];
+            array[i] = array[j];
+            array[j] = tmp;
+        }
+        return array;
+    }
+    document.getElementById("q5").innerHTML += "<br>Shuffled: " + shuffle(arr3).toString() + "<br>";
+</script>
+
+</body>
+</html>
