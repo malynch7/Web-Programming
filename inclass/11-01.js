@@ -9,4 +9,3 @@ function fibonacci(num){
     }
     return fib;
 }
-document.getElementById("q1").innerHTML += "1)<br><br>" + fibonacci(5);
