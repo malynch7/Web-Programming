@@ -162,7 +162,7 @@
                     }
                 });
                 $("#button7").click(function(){
-                    clearState()
+                    clearState();
                     if (gridDimension == 10) {
                         $("#54").addClass('HighLight');
                         $("#55").addClass('HighLight');
@@ -205,6 +205,50 @@
                     }
                 });
                 $("#button8").click(function(){
+                    clearState();
+                    if(gridDimension==10){
+                        $("#44").addClass('HighLight');
+                        $("#55").addClass('HighLight');
+                        $("#63").addClass('HighLight');
+                        $("#64").addClass('HighLight');
+                        $("#65").addClass('HighLight');
+                    }
+                    if(gridDimension==15){
+                        $("#96").addClass('HighLight');
+                        $("#112").addClass('HighLight');
+                        $("#127").addClass('HighLight');
+                        $("#126").addClass('HighLight');
+                        $("#125").addClass('HighLight');
+                    }
+                    if(gridDimension==20){
+                        $("#208").addClass('HighLight');
+                        $("#209").addClass('HighLight');
+                        $("#169").addClass('HighLight');
+                        $("#190").addClass('HighLight');
+                        $("#210").addClass('HighLight');
+                    }
+                    if(gridDimension==25){
+                        $("#286").addClass('HighLight');
+                        $("#336").addClass('HighLight');
+                        $("#312").addClass('HighLight');
+                        $("#337").addClass('HighLight');
+                        $("#335").addClass('HighLight');
+                    }
+                    if(gridDimension==30){
+                        $("#434").addClass('HighLight');
+                        $("#465").addClass('HighLight');
+                        $("#495").addClass('HighLight');
+                        $("#494").addClass('HighLight');
+                        $("#493").addClass('HighLight');
+                    }
+                    if(gridDimension==35){
+                        $("#4").addClass('HighLight');
+                        $("#451").addClass('HighLight');
+                        $("#481").addClass('HighLight');
+                        $("#126").addClass('HighLight');
+                        $("#125").addClass('HighLight');
+                    }
+
                   });
 
 
