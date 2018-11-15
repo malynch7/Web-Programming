@@ -60,17 +60,17 @@ function guessNumber(){
         feedback.innerHTML = "Guess Is Out Of Range";
         remainingGuesses++;
     }else if(num == numberToGuess){
-        feedback.innerHTML = "That's It!"
+        feedback.innerHTML = "That's It!";
         guessButton.innerHTML = "New Game";
         guessButton.onclick = function(){location.reload()};
     }else if(num > numberToGuess){
-        feedback.innerHTML = "Guess Lower"
+        feedback.innerHTML = "Guess Lower";
     }else{
-        feedback.innerHTML = "Guess Higher"
+        feedback.innerHTML = "Guess Higher";
     }
     remainingGuesses--;
     if(remainingGuesses <=0){
-        feedback.innerHTML = "No More Guesses Remaining!"
+        feedback.innerHTML = "No More Guesses Remaining!";
         guessButton.innerHTML = "New Game";
         guessButton.onclick = function(){location.reload()};
     }
@@ -78,9 +78,8 @@ function guessNumber(){
 }
 
 //Part C
-
 var imageGrid = [];
-var firstFlipped, lastFlipped;
+var firstFlipped = -1, lastFlipped = -1, gridHeight = 4, gridWidth;
 
 function partC(){
     document.getElementById("options").style.display = "none";
@@ -89,22 +88,135 @@ function partC(){
 
     //create card grid
     var i = 0;
-    while(i < cardPairs){
+    while(i < (cardPairs * 2)){
         imageGrid.push(Math.floor((i + 2) / 2));
         i++;
     }
-    shuffle(imageGrid);
+    //shuffle
+    for (i = imageGrid.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = imageGrid[i];
+        imageGrid[i] = imageGrid[j];
+        imageGrid[j] = temp;
 
-    //display card grid
-    cardGrid = document.getElementById("cardGrid");
-    var j;
-    for(i = 0; i < 4; i++ ){
-        var row = cardGrid.insertRow();
-        for(j = 0; j < 4; i++){
-            var card = row.insertCell();
-            card.createElement("input")
-        }
     }
 
+    //display card grid
+    var cardGrid = document.getElementById("cardGrid");
 
+    switch (cardPairs) {
+        case '10': gridWidth = 5; break;
+        case '12': gridWidth = 6; break;
+        default: gridWidth = 4;
+    }
+    var j;
+
+    for(i = 0; i < gridHeight; i++ ){
+        var row = cardGrid.insertRow();
+        for(j = 0; j < gridWidth; j++){
+            var container = row.insertCell();
+
+            var card = document.createElement("div");
+            card.setAttribute("id", "card" + ((i * gridWidth) + j));
+            card.className = "card";
+            container.appendChild(card);
+
+                var front = document.createElement("div");
+                front.className = "front";
+                card.appendChild(front);
+
+                    var frontImg = document.createElement("img");
+                    //frontImg.id = "frontImg" + ((i * gridWidth) + j);
+                    frontImg.src = "images/" + imageGrid[(i * gridWidth) + j] + ".jpg";
+                    front.appendChild(frontImg);
+
+                var back = document.createElement("div");
+                back.className = "back";
+                card.appendChild(back);
+
+                    var backImg = document.createElement("img");
+                    backImg.id = "backImg" + ((i * gridWidth) + j);
+                    backImg.src = "images/cardback.png";
+                    backImg.setAttribute("onclick", "flipCard(" + ((i * gridWidth) + j) + ")") ;
+                    back.appendChild(backImg);
+
+        }
+    }
+    setTimeout(flipBack,(difficulty * 1000));
 }
+
+function flipBack(){
+    var i, j;
+    for(i = 0; i < gridHeight; i++ ){
+        for(j = 0; j < gridWidth; j++){
+
+            $(document).ready(function() {
+                $("#card" + ((i * gridWidth) + j)).flip({
+                    trigger: 'manual'
+                });
+                $("#card"  + ((i * gridWidth) + j)).flip(true);
+            });
+        }
+    }
+}
+
+function flipCard(index){
+    $(document).ready(function() {
+        $("#card"  + index).flip(false);
+    });
+    if(lastFlipped == -1){
+        lastFlipped = index;
+    }else{
+        firstFlipped = lastFlipped;
+        lastFlipped = index;
+
+        if(imageGrid[firstFlipped] != imageGrid[lastFlipped]){
+            document.getElementById("instructions").innerHTML = "These do not match.";
+
+            //render cards unselectable
+            for(i = 0; i < gridHeight; i++ ){
+                for(var j = 0; j < gridWidth; j++){
+                    document.getElementById("backImg" + ((i * gridWidth) + j)).setAttribute("onclick", "");
+                }
+            }
+            setTimeout(function () {
+                $(document).ready(function() {
+
+                    for(i = 0; i < gridHeight; i++ ){
+                        for(var j = 0; j < gridWidth; j++){
+                            document.getElementById("backImg" + ((i * gridWidth) + j)).setAttribute("onclick",
+                                "flipCard(" + ((i * gridWidth) + j) + ")");
+                        }
+                    }
+                    $("#card" + firstFlipped).flip('toggle');
+                    $("#card" + lastFlipped).flip('toggle');
+                    document.getElementById("instructions").innerHTML = "Match the cards by selecting 2 at a time.";
+                    firstFlipped = lastFlipped = -1;
+                });
+            }, 2000);
+        }else{
+            imageGrid[firstFlipped] = -1;
+            imageGrid[lastFlipped] = -1;
+            document.getElementById("instructions").innerHTML = "You found a match! Select 2 more cards."
+            firstFlipped = lastFlipped = -1;
+        }
+        var i, winFlag = true;
+        for (i = 0; i < imageGrid.length; i++){
+            if (imageGrid[i] != -1){
+                winFlag = false;
+            }
+        }
+
+        if(winFlag == true){
+            document.getElementById("instructions").innerHTML = "You won! Reload the page to play again.";
+        }
+    }
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>John Conway's Game of Life</title>
+        <link rel="stylesheet" type="text/css" href="Style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="Functionality.js"></script>
+    </head>
+
+<body>
+
+<h1>John Conway's Game of Life</h1>
+<center><a href="youtube.html">Watch our YouTube Video</a></center>
+<p align="center" id="generation">Generation: 0</p>
+<div id="container">
+</div>
+<div id="mainOptions">
+    <br>
+    <select class="select" id="Options" onchange="Change()">
+          <option id="Ten">10 x 10</option>
+          <option id="Fifteen">15 x 15</option>
+          <option id="Twenty">20 x 20</option>
+          <option id="TwentyFive">25 x 25</option>
+          <option id="Thirty">30 x 30</option>
+    </select>
+    <p align="center"><button id="button1">Change Grid</button></p>
+     <div id="JustButtons">
+        <button id="start" onclick="incrementEvery(0.25)" class="buttonM">Start</button>
+        <button id="increment1" onclick="increment(1)" class="buttonM">Increment 1</button>
+        <button id="increment23" onclick="increment23(0.1)" class="buttonM">Increment 23</button>
+        <button id="clear" onclick="clearState()" class="buttonM">Reset</button>
+        <br>
+        <br>
+        <button id="button5" class="buttonM">The Block</button>
+        <button id="button6" class="buttonM">The Blinker</button>
+        <button id="button7" class="buttonM">The Toad</button>
+        <button id="button8" onclick="grid(gridDimension, gridDimension)"class="buttonM">Glider</button>
+    </div>
+</div>
+<script type="text/javascript" src="Functionality.js"></script>
+
+
+</body>
+
+</html>
